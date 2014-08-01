@@ -1,0 +1,4 @@
+hb_blog:
+    resource: "@HbBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+

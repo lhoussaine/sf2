@@ -1,0 +1,23 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - {{ article.titre }}
+{% endblock %}
+{% block blog %}
+    {% include "HbBlogBundle:Article:affiche.html.twig" %}
+    
+    <a href="{{ path('BlogBundle_ArticleUpdate', {'id': article.id }) }}">modifier</a>
+    <a href="{{ path('BlogBundle_ArticleDelete', {'id': article.id }) }}">supprimer</a>
+    
+    <h3>commentaire :</h3>
+    {% for commentaire in article.commentaires %}
+        {% include "HbBlogBundle:Commentaire:affiche.html.twig" %}
+        <a href="{{ path('BlogBundle_CommentaireUpdate', {'id': commentaire.id }) }}">modifier</a>
+        <a href="{{ path('BlogBundle_CommentaireDelete', {'id': commentaire.id }) }}">supprimer</a>
+    {% else %}
+        pas encore de commentaire
+    {% endfor %}
+    <br/>
+    <br/>
+    <a href="{{ path('BlogBundle_CommentaireAdd', {'id' : article.id}) }}">Ajouter un commentaire</a>
+{% endblock %}

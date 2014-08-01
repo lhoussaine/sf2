@@ -1,0 +1,4 @@
+hb_blog_homepage:
+    resource:  "@HbBlogBundle/Controller/"
+    type: annotation
+    prefix: /

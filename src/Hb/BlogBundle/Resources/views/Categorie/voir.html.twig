@@ -1,0 +1,32 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - {{ categorie.titre }}
+{% endblock %}
+{% block blog %}
+    {% include "HbBlogBundle:Categorie:affiche.html.twig" %}
+    
+    <a href="{{ path('blogbundle_Categorieupdate', {'id': categorie.id }) }}">modifier</a>
+    <a href="{{ path('blogbundle_Categoriedelete', {'id': categorie.id }) }}">supprimer</a>
+    
+    <br/>
+    <p>Ces enfants direct :</p>
+    {% for enfant in categorie.enfants %}
+        <h2><a href="{{ path('blogbundle_Categorievoir', {'id': enfant.id }) }}">{{ enfant.titre | title}}</a></h2>
+        <p>Le {{ enfant.dateCreation | date('d-m-Y à H:i:s')}}</p>
+        <p>{{ enfant.description | nl2br }}</p>
+    {% else %}
+        pas d'enfant
+    {% endfor %}
+    <br/>
+    <br/>
+    <p>Son parent direct :</p>
+    {% if categorie.parent is not empty %}
+        <h2><a href="{{ path('blogbundle_Categorievoir', {'id': categorie.parent.id }) }}">{{ categorie.parent.titre | title}}</a></h2>
+        <p>Le {{ categorie.parent.dateCreation | date('d-m-Y à H:i:s')}}</p>
+        <p>{{ categorie.parent.description | nl2br }}</p>
+        <br/>
+    {% else %}
+        pas de parent
+    {% endif %}
+{% endblock %}

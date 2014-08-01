@@ -1,0 +1,10 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Index utilisateur
+{% endblock %}
+{% block blog %}
+    {% for utilisateur in utilisateurs %}
+        <p>Pseudo : <a href="{{ path('blogbundle_Utilisateurprofil', {'id' : utilisateur.id}) }}">{{ utilisateur.pseudo }}</a></p>
+    {% endfor %}
+{% endblock %}

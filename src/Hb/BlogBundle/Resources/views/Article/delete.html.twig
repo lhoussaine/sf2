@@ -1,0 +1,16 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Supprimer Article
+{% endblock %}
+{% block blog %}
+    <h3>Formulaire suppression d'article</h3>
+    <p>
+        Etes vous certain de vouloir supprimer l'article "{{ article.titre }}" ?
+    </p>
+    <form action="{{ path('BlogBundle_ArticleDelete', {'id': article.id}) }}" method = "post">
+        <a href="{{ path('BlogBundle_ArticleListId', {'id': article.id}) }}">Retour à l'article</a>
+        <input type="submit" value="supprimer"/>
+        {{ form_rest(form) }}
+    </form>	
+{% endblock %}

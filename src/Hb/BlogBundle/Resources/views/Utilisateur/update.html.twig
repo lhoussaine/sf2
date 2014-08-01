@@ -1,0 +1,16 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Modifier Utilisateur
+{% endblock %}
+{% block blog %}
+    <h3>Formulaire de modification d'utilisateur</h3>
+    <div class="well">
+        <form method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </div>
+            <p><a href="{{ path('blogbundle_Utilisateurprofil', {'id': utilisateur.id }) }}">Retour à l'utilisateur</a></p>
+{% endblock %}
+

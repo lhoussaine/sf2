@@ -1,0 +1,10 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Index categorie
+{% endblock %}
+{% block blog %}
+    {% for categorie in categories %}
+        {% include "HbBlogBundle:Categorie:affiche.html.twig" %}
+    {% endfor %}
+{% endblock %}

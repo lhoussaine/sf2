@@ -1,0 +1,5 @@
+<p>Le {{ commentaire.dateCreation | date('d-m-Y à H:i:s')}} par <a href="{{ path('blogbundle_Utilisateurprofil', {'id' : commentaire.utilisateur.id}) }}">{{ commentaire.utilisateur.pseudo }}</a></p>
+<p>{{ commentaire.contenu | nl2br}}<p> 
+{% if commentaire.dateEdition is not null %}
+    <p>Derniere edition : {{ commentaire.dateEdition | date('d-m-Y à H:i:s')}}</p>
+{% endif %}

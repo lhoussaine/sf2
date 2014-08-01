@@ -1,0 +1,16 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Supprimer Utilisateur
+{% endblock %}
+{% block blog %}
+    <h3>Formulaire suppression d'utilisateur</h3>
+    <p>
+        Etes vous certain de vouloir supprimer l'utilisateur "{{ utilisateur.pseudo }}" ?
+    </p>
+    <form action="{{ path('blogbundle_Utilisateurdelete', {'id': utilisateur.id}) }}" method = "post">
+        <a href="{{ path('blogbundle_Utilisateurprofil', {'id': utilisateur.id}) }}">Retour à l'utilisateur</a>
+        <input type="submit" value="supprimer"/>
+        {{ form_rest(form) }}
+    </form>	
+{% endblock %}

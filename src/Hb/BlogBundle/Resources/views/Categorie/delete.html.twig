@@ -1,0 +1,16 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Supprimer Categorie
+{% endblock %}
+{% block blog %}
+    <h3>Formulaire suppression de categorie</h3>
+    <p>
+        Etes vous certain de vouloir supprimer la categorie "{{ categorie.titre }}" ?
+    </p>
+    <form action="{{ path('blogbundle_Categoriedelete', {'id': categorie.id}) }}" method = "post">
+        <a href="{{ path('blogbundle_Categorievoir', {'id': categorie.id}) }}">Retour à la categorie</a>
+        <input type="submit" value="supprimer"/>
+        {{ form_rest(form) }}
+    </form>	
+{% endblock %}

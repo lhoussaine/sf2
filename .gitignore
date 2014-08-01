@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+/idea/*
+app/bootstrap*
+app/cache/*
+app/logs/*
+*.php~
+=======
+app/cache/*
+app/log/*
+nbproject/*
+bin/*
+./idea/*
+>>>>>>> gitignire

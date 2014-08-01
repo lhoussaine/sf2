@@ -1,0 +1,16 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Modifier Categorie
+{% endblock %}
+{% block blog %}
+    <h3>Formulaire de modification de categorie</h3>
+    <div class="well">
+        <form method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </div>
+            <p><a href="{{ path('blogbundle_Categorievoir', {'id': categorie.id }) }}">Retour à la categorie</a></p>
+{% endblock %}
+

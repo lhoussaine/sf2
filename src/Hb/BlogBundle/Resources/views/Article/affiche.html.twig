@@ -1,0 +1,5 @@
+<h2><a href="{{ path('BlogBundle_ArticleListId', {'id': article.id }) }}">{{ article.titre | title}}</a></h2>
+    
+<p>Le {{ article.dateCreation | date('d-m-Y à H:i:s')}} par <a href="{{ path('BlogBundle_UtilisateurListId', {'id' : article.auteur.id}) }}">{{ article.auteur.pseudo }}</a></p>
+<p>{{ article.contenu | nl2br }}</p>
+<br/>

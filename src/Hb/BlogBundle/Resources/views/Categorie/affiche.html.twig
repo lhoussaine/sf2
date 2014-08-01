@@ -1,0 +1,6 @@
+<h2><a href="{{ path('blogbundle_Categorievoir', {'id': categorie.id }) }}">{{ categorie.titre | title}}</a></h2>
+<p>Le {{ categorie.dateCreation | date('d-m-Y à H:i:s')}}</p>
+<p>{{ categorie.description | nl2br }}</p>
+{% if categorie.dateEdition is not null %}
+        <p>Derniere edition : {{ categorie.dateEdition | date('d-m-Y à H:i:s')}}</p>
+{% endif %}

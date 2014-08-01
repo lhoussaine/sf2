@@ -1,0 +1,47 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    Profil utilisateur
+{% endblock %}
+{% block body %}
+    {% if utilisateur.image is not null %}
+        <img src="{{ asset(utilisateur.image.webPath) }}"/>
+    {% endif %}
+    <p>Pseudo : {{ utilisateur.pseudo }}</p>
+    <p>Date de creation : {{ utilisateur.dateCreation | date('d-m-Y à H:i:s')}}</p>
+    {% if utilisateur.dateEdition is not null %}
+        <p>Derniere edition : {{ utilisateur.dateEdition | date('d-m-Y à H:i:s')}}</p>
+    {% endif %}
+    
+    <a href="{{ path('blogbundle_Utilisateurupdate', {'id': utilisateur.id }) }}">modifier</a>
+    <a href="{{ path('blogbundle_Utilisateurdelete', {'id': utilisateur.id }) }}">supprimer</a>
+    
+    <h2>Mes articles :</h2>
+    {% if utilisateur.articles is not empty %}
+        <ul>
+            {% for article in utilisateur.articles %}
+                <li><a href="{{ path('blogbundle_Articlevoir', {'id': article.id }) }}">{{ article.titre | title }}</a></li>
+            {% else %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        Pas encore d'article
+    {% endif %}
+    <br/>
+    <h2>Mes commentaires :</h2>
+    {% if utilisateur.commentaires is not empty %}
+        <ul>
+            {% for commentaire in utilisateur.commentaires %}
+                <li>article : <a href="{{ path('blogbundle_Articlevoir', {'id': commentaire.article.id }) }}">{{ commentaire.article.titre | title}}</a>
+                    <br/>
+                    commentaire :
+                    <br/>
+                    {{ commentaire.contenu | nl2br }}
+                </li>
+                <br/>
+            {% endfor %}
+        </ul>
+    {% else %}
+        Pas encore de commentaire
+    {% endif %}
+{% endblock %}

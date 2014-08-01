@@ -1,0 +1,16 @@
+{% extends "HbBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Supprimer Commentaire
+{% endblock %}
+{% block blog %}
+    <h3>Formulaire suppression de commentaire</h3>
+    <p>
+        Etes vous certain de vouloir supprimer le commentaire ?
+    </p>
+    <form action="{{ path('blogbundle_Commentairedelete', {'id': commentaire.id}) }}" method = "post">
+        <a href="{{ path('blogbundle_Articlevoir', {'id': commentaire.article.id}) }}">Retour à l'article</a>
+        <input type="submit" value="supprimer"/>
+        {{ form_rest(form) }}
+    </form>	
+{% endblock %}
